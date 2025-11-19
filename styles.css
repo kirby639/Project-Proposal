@@ -1,4 +1,3 @@
-/* Reset and Base Styles */
 * {
     margin: 0;
     padding: 0;
@@ -6,9 +5,9 @@
 }
 
 :root {
-    --primary-color: #d90429; /* Akatsuki Red */
-    --secondary-color: #1a1a1d; /* Deep Ninja Black */
-    --accent-color: #ef233c; /* Bright crimson */
+    --primary-color: #d90429;
+    --secondary-color: #1a1a1d;
+    --accent-color: #ef233c;
     --light-color: #f1f1f1;
     --dark-color: #0d0d0f;
     --text-color: #e6e6e6;
@@ -25,11 +24,10 @@ body {
 }
 
 img {
-    max-width: 400px;
+    max-width: 100%;
     height: auto;
 }
 
-/* Container */
 .container {
     width: 90%;
     max-width: 1200px;
@@ -37,7 +35,6 @@ img {
     padding: 0 15px;
 }
 
-/* Navigation */
 .navbar {
     background-color: #111;
     box-shadow: var(--shadow);
@@ -55,7 +52,6 @@ img {
     padding: 1rem 2rem;
 }
 
-/* Mobile Menu */
 .menu {
     display: none;
     flex-direction: column;
@@ -70,7 +66,6 @@ img {
     transition: var(--transition);
 }
 
-/* Hero Section */
 .hero {
     min-height: 100vh;
     display: flex;
@@ -84,7 +79,6 @@ img {
     position: relative;
 }
 
-/* Optional Akatsuki Cloud Background */
 .hero::before {
     content: '';
     position: absolute;
@@ -96,7 +90,7 @@ img {
     left: 0;
     width: 100%;
     height: 100%;
-    pointer-events: none; /* FIX */
+    pointer-events: none;
     z-index: 0;
 }
 
@@ -104,57 +98,19 @@ img {
 .hero-text,
 .hero-buttons {
     position: relative;
-    z-index: 1;   /* Put buttons on top */
+    z-index: 1;
 }
 
-
-/* Profile */
-.profile-container {
-    position: relative;
-    margin-bottom: 2rem;
-    
-}
-
-.profile-pic {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
+.Logo {
+    width: 400px;
+    height: auto;
     object-fit: cover;
-    border: 5px solid rgba(217, 4, 41, 0.4);
-    box-shadow: var(--shadow);
-    transition: var(--transition);
+    pointer-events: none;
+    transform: none !important;
+    z-index: 1;
+    position: relative;
 }
 
-.profile-pic:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 20px rgba(217, 4, 41, 0.7);
-}
-
-.profile-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    background-color: rgba(217, 4, 41, 0.4);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    opacity: 0;
-    transition: var(--transition);
-}
-
-.profile-container:hover .profile-overlay {
-    opacity: 1;
-}
-
-.profile-overlay i {
-    font-size: 2rem;
-    color: white;
-}
-
-/* Hero Text */
 .hero-text h1 {
     font-size: 2.8rem;
     margin-bottom: 0.5rem;
@@ -176,7 +132,6 @@ img {
     opacity: 0.8;
 }
 
-/* Buttons */
 .hero-buttons {
     display: flex;
     gap: 1rem;
@@ -184,23 +139,28 @@ img {
     flex-wrap: wrap;
 }
 
+.btn {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    padding: 0;
+    display: inline-block;
+}
 
-.btn-primary {
+.btn-primary,
+.btn-secondary {
     padding: 0.8rem 1.5rem;
     border-radius: 30px;
     text-decoration: none;
     font-weight: 500;
+    display: inline-block;
     transition: var(--transition);
-    cursor: pointer;
-    transition: 0.3s ease-in-out;
 }
 
-/* Red Glowing Button */
-.btn-primary{
+.btn-primary {
     background-color: var(--primary-color);
     color: rgb(0, 0, 0);
     box-shadow: 0 0 10px rgba(217, 4, 41, 0.6);
-    transition: 0.3s ease-in-out;
 }
 
 .btn-primary:hover {
@@ -214,11 +174,9 @@ img {
 }
 
 .btn-secondary {
-    
     background-color: var(--primary-color);
     color: rgb(0, 0, 0);
     box-shadow: 0 0 10px rgba(217, 4, 41, 0.6);
-    transition: 0.3s ease-in-out;
 }
 
 .btn-secondary:hover {
@@ -229,40 +187,83 @@ img {
         0 0 15px rgba(217, 4, 41, 0.8),
         0 0 30px rgba(217, 4, 41, 0.6),
         0 0 45px rgba(217, 4, 41, 0.4);
-
 }
 
-.btn-primary,
-.btn-secondary {
-    padding: 0.8rem 1.5rem;
-    border-radius: 30px;
-    text-decoration: none;
+.tooltip-wrapper {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    transition: var(--transition);
+    border-radius: 50%;
+    background-color: var(--secondary-color);
+    box-shadow: 0 0 10px rgba(217, 4, 41, 0.2);
+}
+
+.btn-icon {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.tooltip-text {
+    visibility: hidden;
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    text-align: center;
+    padding: 5px 10px;
+    border-radius: 6px;
+    position: absolute;
+    z-index: 10;
+    bottom: 105%;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.3s, transform 0.3s;
+    font-size: 0.9rem;
     font-weight: 500;
-    display: inline-block;
+    pointer-events: none;
 }
 
+.tooltip-text::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: var(--primary-color) transparent transparent transparent;
+}
 
+.tooltip-wrapper:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+    transform: translateX(-50%) translateY(-5px);
+}
 
-/* Tablet size */
+.tooltip-wrapper:hover {
+    transform: translateY(-6px) scale(1.08);
+    filter: none;
+    box-shadow: 0 0 20px rgba(217, 4, 41, 0.8), 0 0 5px rgba(255, 255, 255, 0.2);
+}
+
 @media (max-width: 768px) {
-    .btn {
-        padding: 10px 22px;
-        font-size: 16px;
-    }
+    .Logo { width: 300px; }
+    .tooltip-wrapper { width: 100px; height: 100px; }
 }
 
-/* Mobile size */
 @media (max-width: 480px) {
-    .btn {
-        padding: 8px 18px;
-        font-size: 14px;
-        width: 100%;          /* Full-width button */
-        text-align: center;
-        box-sizing: border-box;
-    }
+    .Logo { width: 250px; }
+    .hero-buttons { gap: 2rem; }
+    .tooltip-wrapper { width: 80px; height: 80px; }
 }
 
-/* Animation */
 @keyframes bounce {
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-8px); }
