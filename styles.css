@@ -24,6 +24,11 @@ body {
     background-color: var(--dark-color);
 }
 
+img {
+    max-width: 400px;
+    height: auto;
+}
+
 /* Container */
 .container {
     width: 90%;
@@ -107,6 +112,7 @@ body {
 .profile-container {
     position: relative;
     margin-bottom: 2rem;
+    
 }
 
 .profile-pic {
